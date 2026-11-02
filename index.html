@@ -230,13 +230,15 @@ html.rm .door { transition: none; }
 /* ==========================================================================
    5. KOLAM
    ========================================================================== */
-.k-line { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 1.02; stroke-dashoffset: 1; opacity: 0; }
+/* --len is the measured length plus a margin, so the dash always covers the whole loop */
+.k-line { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: var(--len) var(--len); stroke-dashoffset: var(--len); opacity: 0; }
+.kolam .k-line.done { stroke-dasharray: none; stroke-dashoffset: 0; opacity: 1; animation: none; }
 .k-dot { opacity: 0; transform-box: fill-box; transform-origin: center; }
 .kolam.draw .k-dot { animation: dotIn 500ms var(--ease) both; animation-delay: calc(var(--i) * 14ms); }
 .kolam.draw .k-line { animation: trace var(--t, 3s) cubic-bezier(.45, .05, .55, .95) var(--wait, .4s) forwards; }
 @keyframes dotIn { from { opacity: 0; transform: scale(.2); } to { opacity: 1; transform: none; } }
-@keyframes trace { 0% { opacity: 1; stroke-dashoffset: 1; } 100% { opacity: 1; stroke-dashoffset: 0; } }
-html.rm .k-line, html.rm .kolam.draw .k-line { opacity: 1; stroke-dashoffset: 0; animation: none; }
+@keyframes trace { 0% { opacity: 1; stroke-dashoffset: var(--len); } 100% { opacity: 1; stroke-dashoffset: 0; } }
+html.rm .k-line, html.rm .kolam.draw .k-line { opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; animation: none; }
 html.rm .k-dot, html.rm .kolam.draw .k-dot { opacity: 1; animation: none; }
 
 /* ==========================================================================
@@ -275,7 +277,7 @@ html.rm .k-dot, html.rm .kolam.draw .k-dot { opacity: 1; animation: none; }
   gap: var(--gap);
   padding: 2px 0 var(--gap);
 }
-.bg-kolam { position: absolute; left: 50%; top: 28%; width: min(108vw, 62svh, 560px); translate: -50% -50%; opacity: .24; pointer-events: none; }
+.bg-kolam { position: absolute; left: 50%; top: 40%; width: min(90vw, 50svh, 500px); translate: -50% -50%; opacity: .24; pointer-events: none; }
 .block { position: relative; }
 .pre { color: var(--gold-ink); font-size: .8125rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
 .title { margin: 2px 0; font-weight: 500; }
@@ -890,8 +892,14 @@ function mountKolam(el) {
     dots += `<circle class="k-dot" style="--i:${i++}" cx="${2 * x + 1}" cy="${2 * y + 1}" r="${(k.w * 1.1).toFixed(3)}" fill="${k.dot}"/>`;
   }
   const lines = loops.map((l, j) =>
-    `<path class="k-line" pathLength="1" d="${loopPath(l, 4711 + j, .1)}" stroke="${k.stroke}" stroke-width="${k.w}"/>`).join("");
+    `<path class="k-line" d="${loopPath(l, 4711 + j, .1)}" stroke="${k.stroke}" stroke-width="${k.w}"/>`).join("");
   el.innerHTML = `<svg viewBox="-.2 -.2 ${2 * n + .4} ${2 * n + .4}" role="presentation">${dots}${lines}</svg>`;
+  /* Measure each loop so the chalk line is traced end to end, then drop the dash
+     entirely once drawn, so the loop always closes */
+  $$(".k-line", el).forEach(p => {
+    p.style.setProperty("--len", (p.getTotalLength() * 1.06 + 1).toFixed(2));
+    p.addEventListener("animationend", () => p.classList.add("done"));
+  });
   el.style.setProperty("--t", k.t + "s");
   el.style.setProperty("--wait", Math.min(n * n * 14 + 300, 1200) + "ms");
 }
@@ -1068,7 +1076,7 @@ function playIntro() {
   scrollTo(0, 0);
   root.classList.remove("entered", "opening");
   root.classList.add("intro-on");
-  $$(".card .kolam").forEach(k => { k.classList.remove("draw"); void k.offsetWidth; });
+  $$(".kolam").forEach(k => { k.classList.remove("draw"); $$(".k-line", k).forEach(p => p.classList.remove("done")); void k.offsetWidth; });
   $(".threshold-k").classList.add("draw");
   autoTimer = setTimeout(openDoors, 1500);
 }
