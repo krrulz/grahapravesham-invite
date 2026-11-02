@@ -1,0 +1,1166 @@
+<!doctype html>
+<!--
+  ============================================================================
+  HOW TO FILL IN
+  ============================================================================
+  1. Scroll down to the <script> near the end of this file and find `const CONFIG`.
+     It is the only place you need to edit. Every value is plain text between quotes.
+  2. Anything left as "" appears on the page as a dashed ⟦PLACEHOLDER⟧ pill, and is
+     marked ⚠ in the Proof Mode panel. Fill it in and it turns into real text.
+     - date is YYYY-MM-DD, e.g. "2026-11-20". The day of the week is worked out for you.
+     - muhurthamStart is 24-hour HH:MM, e.g. "08:00". Leave muhurthamEnd "" to show
+       "onwards". Times are always read as India time (timezoneOffset).
+  3. When everything is ✓, set proofMode: false to remove the panel.
+  4. Link previews: WhatsApp cannot read CONFIG, so edit the Open Graph <meta> tags
+     in the <head> by hand (og:url and og:image). Image: 1200×630 JPG at a full https URL.
+  ============================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grahapravesham Invitation</title>
+<meta name="description" content="With love, we invite you to the Grahapravesham of Sai Anughraha on Friday, 20 November 2026, from 8:00 AM.">
+<meta name="theme-color" content="#FBF6EC">
+<meta name="color-scheme" content="light">
+
+<!-- Open Graph: link preview for WhatsApp (crawlers do not run JS, so these are edited here) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Grahapravesham · Sai Anughraha">
+<meta property="og:description" content="With love, we invite you. Friday, 20 November 2026, from 8:00 AM, Pallavaram, Chennai.">
+<meta property="og:url" content="https://krrulz.github.io/grahapravesham-invite/">
+<meta property="og:image" content="https://krrulz.github.io/grahapravesham-invite/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23A3172B'/%3E%3Cpath d='M16 5c6 7 7 14 0 22C9 19 10 12 16 5z' fill='%23E3A82B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script>
+  /* Runs before first paint so the door overlay and motion mode never flash */
+  (function (r) {
+    r.classList.add('js', 'intro-on');
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) r.classList.add('rm');
+  })(document.documentElement);
+</script>
+
+<style>
+/* ==========================================================================
+   1. TOKENS & BASE
+   ========================================================================== */
+:root {
+  --ivory: #FBF6EC;
+  --ivory-2: #F4EAD6;
+  --kumkum: #A3172B;
+  --turmeric: #E3A82B;
+  --gold: #B8893B;
+  --gold-ink: #8A6420;      /* temple gold darkened to pass AA as small text on ivory */
+  --leaf: #2F6B3A;
+  --maroon: #3A0F14;
+  --body: #5A2A2E;
+  --hair: rgba(184, 137, 59, .42);
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --sans: "Manrope", "Inter", system-ui, sans-serif;
+  /* vertical rhythm that shrinks on short phones so the card fits one screen */
+  --gap: clamp(4px, 1.6svh, 20px);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scrollbar-gutter: stable; background: var(--ivory); }
+html.intro-on { overflow: hidden; }
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--body);
+  font: 400 1rem/1.55 var(--sans);
+  font-variant-numeric: lining-nums;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+h1, p { margin: 0; }
+svg { display: block; overflow: visible; }
+a { color: inherit; }
+.defs { position: absolute; width: 0; height: 0; }
+:focus-visible { outline: 2px solid var(--kumkum); outline-offset: 3px; border-radius: 4px; }
+
+/* ==========================================================================
+   2. PLACEHOLDERS
+   ========================================================================== */
+.ph {
+  display: inline-block;
+  padding: .02em .7em;
+  border: 1px dashed var(--gold);
+  border-radius: 99px;
+  background: rgba(227, 168, 43, .1);
+  color: var(--gold-ink);
+  font: 600 .8125rem/1.8 var(--sans);
+  letter-spacing: .04em;
+  white-space: nowrap;
+  animation: phPulse 2.6s ease-in-out infinite;
+}
+@keyframes phPulse { 50% { opacity: .76; } }
+html.hl .ph { outline: 3px solid var(--kumkum); outline-offset: 2px; animation: none; }
+
+/* ==========================================================================
+   3. DOOR INTRO
+   ========================================================================== */
+.intro { display: none; }
+html.intro-on .intro {
+  --door-h: min(60svh, 112vw);
+  --gap-top: 19svh;
+  --floor: max(100svh - var(--door-h) - var(--gap-top), 132px);
+  --plant-h: min(72svh, 150vw);
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow: hidden;
+  background: linear-gradient(#F7EDD9, #EFE0C2 74%);
+  transform-origin: 50% 54%;
+}
+.intro-inv {
+  position: absolute;
+  inset: max(18px, env(safe-area-inset-top)) 0 auto;
+  z-index: 3;
+  text-align: center;
+  color: var(--gold-ink);
+  font: italic 500 1.0625rem/1.3 var(--serif);
+}
+.intro-floor {
+  position: absolute;
+  inset: auto 0 0;
+  height: var(--floor);
+  background:
+    repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 1px, transparent 1px 74px),
+    linear-gradient(#8C2A22, #6E1D19);
+}
+.intro-floor::before {  /* the threshold, smeared with turmeric and kumkum dots */
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 11px;
+  background:
+    radial-gradient(circle, var(--kumkum) 3px, transparent 3.5px) center / 44px 11px repeat-x,
+    var(--turmeric);
+}
+.portal-wrap {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--floor) - 1px);
+  height: var(--door-h);
+  width: calc(var(--door-h) * .6286);
+  margin-left: calc(var(--door-h) * -.3143);
+  z-index: 2;
+}
+.portal {
+  position: absolute;
+  inset: 14% 8.2% 0;
+  overflow: hidden;
+  perspective: 900px;
+  background: radial-gradient(ellipse at 50% 60%, #FFFDF6 30%, #FBE9BC 72%, #E3A82B);
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  display: block;
+}
+.door { position: absolute; top: 0; bottom: 0; width: 50%; transition: transform 1200ms var(--ease); }
+.door svg { width: 100%; height: 100%; }
+.door.l { left: 0; transform-origin: 0 50%; }
+.door.r { right: 0; transform-origin: 100% 50%; }
+.door.r svg { transform: scaleX(-1); }
+.frame { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.plantain {
+  position: absolute;
+  bottom: calc(var(--floor) - 22px);
+  height: var(--plant-h);
+  aspect-ratio: 380 / 640;
+  z-index: 3;
+  pointer-events: none;
+}
+/* trunk sits just outside the door frame, at 51.5% of the artwork */
+.plantain.l { left: calc(50% - var(--door-h) * .3143 - 30px - var(--plant-h) * .306); }
+.plantain.r { right: calc(50% - var(--door-h) * .3143 - 30px - var(--plant-h) * .306); }
+.plantain svg { width: 100%; height: 100%; }
+.plantain.r svg { transform: scaleX(-1); }
+.threshold-k {
+  --k: min(var(--floor) * .8, 180px);
+  position: absolute;
+  left: 50%;
+  top: calc(100svh - var(--floor) + 24px);
+  width: var(--k);
+  margin-left: calc(var(--k) / -2);
+  z-index: 2;
+  transform: perspective(420px) rotateX(46deg);
+  transform-origin: 50% 0;
+}
+.intro-actions { position: absolute; top: max(6px, env(safe-area-inset-top)); right: 6px; z-index: 4; }
+.skip {
+  min-height: 44px;
+  padding: 0 12px;
+  border: 0;
+  background: none;
+  color: var(--maroon);
+  font: 500 .875rem var(--sans);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+/* Doors swing inward, then the viewer walks through */
+html.opening .door.l { transform: rotateY(104deg); }
+html.opening .door.r { transform: rotateY(-104deg); }
+html.opening .intro { animation: walkIn 800ms var(--ease) 1000ms forwards; }
+html.opening .skip { opacity: 0; transition: opacity 400ms var(--ease); }
+@keyframes walkIn { to { transform: scale(2.6); opacity: 0; } }
+html.rm.opening .intro { animation: fadeOut 400ms linear forwards; }
+html.rm .door { transition: none; }
+@keyframes fadeOut { to { opacity: 0; } }
+
+/* ==========================================================================
+   4. THORANAM
+   ========================================================================== */
+.thoranam-wrap { position: relative; height: clamp(40px, 7svh, 84px); width: 100%; margin-top: 4px; overflow: hidden; flex: none; }
+.thoranam { position: absolute; left: 50%; top: 0; transform: translateX(-50%); height: 92px; }
+.th-leaf { transform-box: fill-box; transform-origin: 50% 0; animation: sway 3.8s ease-in-out infinite alternate; animation-delay: calc(var(--i) * -.27s); }
+@keyframes sway { from { transform: rotate(-3.5deg); } to { transform: rotate(3.5deg); } }
+
+/* ==========================================================================
+   5. KOLAM
+   ========================================================================== */
+.k-line { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 1.02; stroke-dashoffset: 1; opacity: 0; }
+.k-dot { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.kolam.draw .k-dot { animation: dotIn 500ms var(--ease) both; animation-delay: calc(var(--i) * 14ms); }
+.kolam.draw .k-line { animation: trace var(--t, 3s) cubic-bezier(.45, .05, .55, .95) var(--wait, .4s) forwards; }
+@keyframes dotIn { from { opacity: 0; transform: scale(.2); } to { opacity: 1; transform: none; } }
+@keyframes trace { 0% { opacity: 1; stroke-dashoffset: 1; } 100% { opacity: 1; stroke-dashoffset: 0; } }
+html.rm .k-line, html.rm .kolam.draw .k-line { opacity: 1; stroke-dashoffset: 0; animation: none; }
+html.rm .k-dot, html.rm .kolam.draw .k-dot { opacity: 1; animation: none; }
+
+/* ==========================================================================
+   6. THE ONE-PAGE INVITATION
+   ========================================================================== */
+.card {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 0 max(12px, env(safe-area-inset-bottom));
+  text-align: center;
+}
+.card::before, .card::after {   /* zari edges: a thin double gold line down each side */
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  border-inline: 1px solid var(--hair);
+  pointer-events: none;
+}
+.card::before { left: 8px; }
+.card::after { right: 8px; }
+.ganesha { display: block; width: clamp(28px, 4.6svh, 52px); height: auto; margin: 0 auto 1px; }
+.inv { padding: max(4px, env(safe-area-inset-top)) 16px 0; color: var(--gold-ink); font: italic 500 1rem/1.3 var(--serif); }
+.body {
+  position: relative;
+  flex: 1;
+  width: min(100% - 36px, 560px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: var(--gap);
+  padding: 2px 0 var(--gap);
+}
+.bg-kolam { position: absolute; left: 50%; top: 28%; width: min(108vw, 62svh, 560px); translate: -50% -50%; opacity: .24; pointer-events: none; }
+.block { position: relative; }
+.pre { color: var(--gold-ink); font-size: .8125rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+.title { margin: 2px 0; font-weight: 500; }
+.foil {
+  position: relative;
+  display: block;
+  font: 600 clamp(2.3rem, min(12.6vw, 6.6svh), 4.5rem)/1.02 var(--serif);
+  white-space: nowrap;
+  background: linear-gradient(100deg, #74500F, #A87A2C 42%, #7C5618 62%, #9C7026);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.sweep {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 40%;
+  overflow: hidden;
+  color: #F7DF97;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 50%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 50%, transparent);
+  transform: translateX(-100%);
+  animation: sweepOut 8s linear infinite;
+}
+.sweep-in { display: block; width: 250%; text-align: center; animation: sweepIn 8s linear infinite; }
+/* The window moves one way and its text the other, so the shine travels while the letters stay put */
+@keyframes sweepOut { 0%, 12% { transform: translateX(-100%); } 42%, 100% { transform: translateX(250%); } }
+@keyframes sweepIn { 0%, 12% { transform: translateX(40%); } 42%, 100% { transform: translateX(-100%); } }
+html.rm .sweep { display: none; }
+.sub { color: var(--maroon); font: italic 500 1.125rem/1.15 var(--serif); }
+.house { color: var(--kumkum); font: 600 clamp(1.45rem, min(7vw, 3.7svh), 2.1rem)/1.1 var(--serif); letter-spacing: .14em; text-transform: uppercase; }
+.tagline { margin-top: 1px; color: var(--maroon); font: italic 500 1.0625rem/1.15 var(--serif); }
+.rule { display: flex; align-items: center; justify-content: center; gap: 14px; }
+.rule::before, .rule::after { content: ""; flex: 1; max-width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--hair)); }
+.rule::after { transform: scaleX(-1); }
+.rule .kolam { width: clamp(34px, 5.5svh, 48px); flex: none; }
+.when { color: var(--maroon); font: 600 clamp(1.25rem, min(6vw, 3.2svh), 1.7rem)/1.12 var(--serif); }
+.time { margin-top: 2px; color: var(--kumkum); font-size: .9375rem; font-weight: 600; letter-spacing: .04em; }
+.addr { color: var(--body); font-size: .875rem; line-height: 1.36; white-space: pre-line; text-wrap: balance; }
+.lbl { display: block; line-height: 1.4; color: var(--gold-ink); font-size: .6875rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 2px; }
+.hosts { color: var(--maroon); font: 500 clamp(1.125rem, min(5vw, 2.8svh), 1.375rem)/1.14 var(--serif); text-wrap: balance; }
+.rsvp { font-size: .875rem; line-height: 1; }
+.rsvp .lbl { display: inline; margin: 0 4px 0 0; }
+.tel { display: inline-flex; align-items: center; min-height: 44px; padding: 0 2px; color: var(--kumkum); font-weight: 600; text-decoration: underline; text-decoration-color: var(--hair); text-underline-offset: 4px; }
+.tel-sep { color: var(--gold); }
+.btns { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--kumkum);
+  border-radius: 99px;
+  background: var(--kumkum);
+  color: #FFF9EF;
+  font: 600 .8125rem/1.2 var(--sans);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 240ms var(--ease);
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: scale(.98); }
+.btn svg { width: 16px; height: 16px; flex: none; }
+.btn.ghost { background: transparent; color: var(--kumkum); }
+.btn[aria-disabled="true"] { background: transparent; border: 1px dashed var(--gold); color: var(--gold-ink); cursor: default; transform: none; }
+.btn[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translate(-50%, 4px);
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: var(--maroon);
+  color: #FBF0E0;
+  font: 500 .8125rem/1.3 var(--sans);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 240ms var(--ease), transform 240ms var(--ease);
+}
+.btn[data-tip]:hover::after, .btn[data-tip]:focus-visible::after, .btn.tip-on::after { opacity: 1; transform: translate(-50%, 0); }
+.foot { color: var(--body); font-size: .8125rem; }
+.foot b { color: var(--kumkum); font: italic 600 1.125rem/1.2 var(--serif); }
+
+/* Entrance: the card settles in, line by line, once the doors have opened */
+.in { opacity: 0; transform: translateY(14px); }
+html.entered .in { opacity: 1; transform: none; transition: opacity 900ms var(--ease), transform 900ms var(--ease); transition-delay: calc(var(--d, 0) * 110ms + 150ms); }
+html:not(.js) .in { opacity: 1; transform: none; }
+html.rm .in { transform: none; }
+html.rm.entered .in { transition: opacity 400ms linear; transition-delay: 0ms; }
+
+/* Small lamps either side of the title on wider screens */
+.lamp { display: none; }
+@media (min-width: 760px) {
+  .lamp { display: block; position: absolute; top: 50%; width: 64px; translate: 0 -50%; }
+  .lamp.l { left: -84px; }
+  .lamp.r { right: -84px; }
+  .card::before { left: 18px; }
+  .card::after { right: 18px; }
+}
+.flame, .flame path { transform-box: fill-box; transform-origin: 50% 100%; }
+.flame .f1 { animation: flick1 1.3s ease-in-out infinite alternate; }
+.flame .f2 { animation: flick2 .9s ease-in-out infinite alternate; }
+@keyframes flick1 { from { transform: scale(.96, 1) skewX(-2deg); opacity: .92; } to { transform: scale(1.04, 1.12) skewX(3deg); opacity: 1; } }
+@keyframes flick2 { from { transform: scale(1, .94) skewX(2deg); } to { transform: scale(.94, 1.1) skewX(-3deg); } }
+.glow { transform-box: fill-box; transform-origin: center; animation: glow 3s ease-in-out infinite alternate; }
+@keyframes glow { from { opacity: .55; transform: scale(.96); } to { opacity: .9; transform: scale(1.04); } }
+html.rm .flame path, html.rm .glow, html.rm .th-leaf, html.rm .ph { animation: none; }
+html.rm .btn { transition: none; }
+
+/* ==========================================================================
+   7. AMBIENT: PETALS, MUSIC, TOAST
+   ========================================================================== */
+.petals { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 5; }
+.petal {
+  position: absolute;
+  top: -24px;
+  width: var(--s);
+  height: calc(var(--s) * 1.5);
+  border: 1px solid rgba(184, 137, 59, .4);
+  border-radius: 80% 12% 80% 12%;
+  background: #FFFEFA;
+  animation: fall var(--dur) linear infinite;
+  animation-delay: var(--delay);
+}
+@keyframes fall {
+  0% { transform: translate3d(0, 0, 0) rotate(0); opacity: 0; }
+  8%, 88% { opacity: .7; }
+  100% { transform: translate3d(var(--dx), 108vh, 0) rotate(var(--rot)); opacity: 0; }
+}
+.music {
+  position: fixed;
+  left: max(14px, env(safe-area-inset-left));
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 20;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--ivory);
+  color: var(--kumkum);
+  cursor: pointer;
+}
+.music svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.music[aria-pressed="true"] .mute { display: none; }
+.music[hidden] { display: none; }
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 74px;
+  z-index: 40;
+  padding: 9px 16px;
+  border-radius: 8px;
+  background: var(--maroon);
+  color: #FBF0E0;
+  font-size: .875rem;
+  transform: translate(-50%, 8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms var(--ease), transform 300ms var(--ease);
+}
+.toast.on { opacity: 1; transform: translate(-50%, 0); }
+
+/* ==========================================================================
+   8. PROOF MODE
+   ========================================================================== */
+.proof {
+  position: fixed;
+  right: max(14px, env(safe-area-inset-right));
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 60;
+  width: min(270px, calc(100vw - 88px));
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  background: #FFFCF5;
+  color: var(--maroon);
+  font: 500 .8125rem/1.35 var(--sans);
+  box-shadow: 0 8px 26px rgba(58, 15, 20, .18);
+}
+.proof[hidden] { display: none; }
+.proof-bar { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 44px; padding: 0 12px; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; text-align: left; }
+.proof-bar b { font-weight: 700; }
+.proof-bar .vw { margin-left: auto; color: var(--gold-ink); font-variant-numeric: tabular-nums; }
+.proof-bar .chev { transition: transform 240ms var(--ease); }
+.proof[data-open="true"] .chev { transform: rotate(180deg); }
+.proof-body { display: none; padding: 0 12px 12px; max-height: min(62vh, 520px); overflow-y: auto; }
+.proof[data-open="true"] .proof-body { display: block; }
+.proof-list { margin: 0; padding: 8px 0; list-style: none; border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
+.proof-list li { display: flex; justify-content: space-between; gap: 10px; padding: 2px 0; }
+.proof-list .ok { color: var(--leaf); font-weight: 700; }
+.proof-list .no { color: var(--kumkum); font-weight: 700; }
+.sw { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 44px; cursor: pointer; }
+.sw input { width: 20px; height: 20px; accent-color: var(--kumkum); }
+.proof-act { width: 100%; min-height: 40px; margin-top: 4px; border: 1px solid var(--gold); border-radius: 7px; background: none; color: inherit; font: inherit; cursor: pointer; }
+.gridov { position: fixed; inset: 0; z-index: 45; display: none; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 0 20px; pointer-events: none; }
+.gridov i { background: rgba(163, 23, 43, .08); box-shadow: inset 1px 0 rgba(163,23,43,.3), inset -1px 0 rgba(163,23,43,.3); }
+.gridov i:nth-child(n+5) { display: none; }
+html.grid .gridov { display: grid; }
+@media (min-width: 760px) {
+  .gridov { grid-template-columns: repeat(12, 1fr); gap: 24px; padding: 0 40px; }
+  .gridov i:nth-child(n+5) { display: block; }
+}
+
+/* ==========================================================================
+   9. PRINT: one A4 page, kolam border, no motion or buttons
+   ========================================================================== */
+.print-card { display: none; }
+@page { size: A4 portrait; margin: 0; }
+@media print {
+  html, body { width: 210mm; height: 297mm; overflow: hidden; background: #FBF6EC; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; animation: none !important; transition: none !important; }
+  .card, .intro, .petals, .music, .proof, .toast, .gridov { display: none !important; }
+  .print-card { position: relative; display: block; width: 210mm; height: 297mm; overflow: hidden; background: #FBF6EC; color: var(--maroon); font-size: 12pt; line-height: 1.5; text-align: center; }
+  .p-border { position: absolute; inset: 6mm; width: 198mm; height: 285mm; }
+  .p-inner { position: absolute; inset: 34mm 26mm 30mm; display: flex; flex-direction: column; align-items: center; justify-content: space-between; }
+  .p-inv { color: var(--gold-ink); font: italic 500 13pt var(--serif); }
+  .p-ganesha { display: block; width: 16mm; height: 16mm; margin: 0 auto 1mm; }
+  .p-pre { color: var(--gold-ink); font-size: 9pt; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+  .p-title { color: #8A6420; font: 600 44pt/1.15 var(--serif); }
+  .p-sub { font: italic 500 14pt var(--serif); }
+  .p-house { color: var(--kumkum); font: 600 22pt/1.2 var(--serif); letter-spacing: .14em; text-transform: uppercase; }
+  .p-when { width: 100%; padding: 4mm 0; border-block: .3mm solid var(--gold); }
+  .p-date { font: 600 20pt/1.3 var(--serif); }
+  .p-time { color: var(--kumkum); font-weight: 600; }
+  .p-lbl { color: var(--gold-ink); font-size: 8.5pt; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+  .p-hosts { font: 500 16pt/1.3 var(--serif); }
+  .p-foot { color: var(--kumkum); font: italic 600 16pt var(--serif); }
+  .print-card .ph { font-size: 9pt; line-height: 1.6; }
+}
+</style>
+</head>
+
+<body>
+<!-- ======================================================================
+     SVG DEFINITIONS: gradients and reusable artwork
+     ====================================================================== -->
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="brass" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#6E4A16"/><stop offset=".28" stop-color="#C99B48"/><stop offset=".46" stop-color="#FBE7AF"/><stop offset=".66" stop-color="#B8893B"/><stop offset="1" stop-color="#5E3D10"/>
+    </linearGradient>
+    <linearGradient id="wood" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#6A3418"/><stop offset=".55" stop-color="#4A2110"/><stop offset="1" stop-color="#2F1409"/>
+    </linearGradient>
+    <linearGradient id="wood-d" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#3A1A0C"/><stop offset="1" stop-color="#2A1108"/>
+    </linearGradient>
+    <linearGradient id="stem" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#6E9A4A"/><stop offset=".5" stop-color="#A9C877"/><stop offset="1" stop-color="#55803B"/>
+    </linearGradient>
+    <linearGradient id="vaazhai" x1="0" x2="1" y1="1" y2="0">
+      <stop offset="0" stop-color="#2F6B3A"/><stop offset="1" stop-color="#5FA04A"/>
+    </linearGradient>
+    <radialGradient id="fo" cx=".5" cy=".72" r=".62"><stop offset="0" stop-color="#FF9F2E"/><stop offset=".6" stop-color="#F0651E" stop-opacity=".85"/><stop offset="1" stop-color="#D93A12" stop-opacity="0"/></radialGradient>
+    <radialGradient id="fy" cx=".5" cy=".72" r=".6"><stop offset="0" stop-color="#FFE07A"/><stop offset=".75" stop-color="#FFC23C" stop-opacity=".9"/><stop offset="1" stop-color="#FF9F2E" stop-opacity="0"/></radialGradient>
+    <radialGradient id="halo"><stop offset="0" stop-color="#FFC23C" stop-opacity=".55"/><stop offset=".5" stop-color="#E3A82B" stop-opacity=".16"/><stop offset="1" stop-color="#E3A82B" stop-opacity="0"/></radialGradient>
+    <pattern id="studs" width="20" height="14" patternUnits="userSpaceOnUse"><circle cx="10" cy="7" r="3.2" fill="url(#brass)"/></pattern>
+
+    <!-- Single mango leaf, hanging from its stem at 0,0 -->
+    <g id="m-leaf">
+      <path d="M0 0C10 11 12 34 1 66-11 36-9 12 0 0Z"/>
+      <path d="M0 2C1 22 2 44 1 62" fill="none" stroke="#F0E9B8" stroke-opacity=".5" stroke-width=".8"/>
+    </g>
+
+    <!-- Carved rosette -->
+    <g id="rosette">
+      <circle r="24" fill="url(#wood-d)" stroke="#8A6420" stroke-width="1"/>
+      <g fill="#8A5A2A" stroke="#2A1108" stroke-width=".6">
+        <path id="r-pet" d="M0-4C6-10 6-17 0-21-6-17-6-10 0-4Z"/>
+        <use href="#r-pet" transform="rotate(45)"/><use href="#r-pet" transform="rotate(90)"/><use href="#r-pet" transform="rotate(135)"/>
+        <use href="#r-pet" transform="rotate(180)"/><use href="#r-pet" transform="rotate(225)"/><use href="#r-pet" transform="rotate(270)"/><use href="#r-pet" transform="rotate(315)"/>
+      </g>
+      <circle r="4.5" fill="url(#brass)"/>
+    </g>
+
+    <!-- One door leaf (the right one is this, mirrored) -->
+    <symbol id="door" viewBox="0 0 184 602" preserveAspectRatio="none">
+      <rect width="184" height="602" fill="url(#wood)"/>
+      <rect x="7" y="7" width="170" height="588" fill="none" stroke="#8A6420" stroke-width="1"/>
+      <path d="M24 176V96C24 62 72 62 92 22 112 62 160 62 160 96V176Z" fill="url(#wood-d)" stroke="#8A6420" stroke-width="1.2"/>
+      <path d="M36 166V100C36 76 78 76 92 44 106 76 148 76 148 100V166Z" fill="none" stroke="#6A3418" stroke-width="2"/>
+      <use href="#rosette" transform="translate(92 118) scale(1.1)"/>
+      <rect x="14" y="184" width="156" height="14" fill="url(#studs)"/>
+      <rect x="24" y="206" width="136" height="150" fill="url(#wood-d)" stroke="#8A6420" stroke-width="1.2"/>
+      <rect x="34" y="216" width="116" height="130" fill="none" stroke="#6A3418" stroke-width="2"/>
+      <path d="M92 226l48 55-48 55-48-55z" fill="none" stroke="#8A6420" stroke-width="1"/>
+      <use href="#rosette" transform="translate(92 281)"/>
+      <rect x="14" y="364" width="156" height="14" fill="url(#studs)"/>
+      <rect x="24" y="386" width="136" height="172" fill="url(#wood-d)" stroke="#8A6420" stroke-width="1.2"/>
+      <rect x="34" y="396" width="116" height="152" fill="none" stroke="#6A3418" stroke-width="2"/>
+      <path d="M92 408l48 64-48 64-48-64z" fill="none" stroke="#8A6420" stroke-width="1"/>
+      <use href="#rosette" transform="translate(92 472)"/>
+      <rect x="14" y="566" width="156" height="14" fill="url(#studs)"/>
+      <rect x="176" y="0" width="8" height="602" fill="url(#brass)"/>
+      <circle cx="162" cy="292" r="7" fill="url(#brass)"/>
+      <path d="M162 298c-11 2-13 24 0 26 13-2 11-24 0-26z" fill="none" stroke="#D9B25F" stroke-width="3"/>
+    </symbol>
+
+    <!-- Plantain tree. The fruit hangs on the side facing the doorway. -->
+    <symbol id="plantain" viewBox="-70 0 380 640" preserveAspectRatio="xMidYMax meet">
+      <g fill="url(#vaazhai)" stroke="#23532D" stroke-width="1">
+        <path d="M125 262C108 180 112 90 132 8 156 92 150 184 125 262Z"/>
+        <path d="M122 262C92 170 50 88-14 40-4 120 52 210 122 262Z"/>
+        <path d="M128 262C150 170 190 92 252 44 244 126 196 212 128 262Z"/>
+        <path d="M122 262C84 176 20 122-62 134-20 146 54 214 122 262Z"/>
+        <path d="M128 262C166 176 230 130 306 148 262 156 194 216 128 262Z"/>
+      </g>
+      <g fill="none" stroke="#CFE3A0" stroke-opacity=".55" stroke-width="1.2">
+        <path d="M125 258C126 180 128 100 132 16"/><path d="M122 258C96 186 54 106-8 46"/><path d="M128 258C154 186 196 108 246 50"/><path d="M120 258C84 196 20 148-54 136"/><path d="M130 258C168 196 230 154 298 149"/>
+      </g>
+      <path d="M107 640C109 500 111 380 114 258H136C139 380 141 500 143 640Z" fill="url(#stem)"/>
+      <g fill="none" stroke="#4E7A38" stroke-opacity=".6" stroke-width="1.2">
+        <path d="M120 262C116 400 115 520 116 640"/><path d="M130 262C134 400 135 520 134 640"/><path d="M125 262V640"/>
+      </g>
+      <path d="M130 262C150 266 168 280 172 306" fill="none" stroke="#6E8A3A" stroke-width="5" stroke-linecap="round"/>
+      <defs>
+        <g id="b-row"><path id="b-f" d="M0 0C-4 8-4 18 1 25 6 18 5 8 0 0Z"/><use href="#b-f" x="8" y="1"/><use href="#b-f" x="16" y="2"/><use href="#b-f" x="-8" y="1"/><use href="#b-f" x="-16" y="2"/></g>
+      </defs>
+      <g fill="#C7BC4C" stroke="#7E7A2A" stroke-width=".6">
+        <use href="#b-row" transform="translate(173 306)"/><use href="#b-row" transform="translate(173 324) scale(.96)"/><use href="#b-row" transform="translate(173 342) scale(.88)"/><use href="#b-row" transform="translate(173 360) scale(.76)"/>
+      </g>
+      <path d="M173 382C190 402 184 436 173 450 162 436 156 402 173 382Z" fill="#7A1A2E" stroke="#3A0F14"/>
+    </symbol>
+
+
+    <!-- Lord Ganesha: crowned head, broad ears, trunk curling to his left, one broken tusk (Ekadanta) -->
+    <symbol id="ganesha" viewBox="0 0 64 64">
+      <path d="M23.5 19L25.5 10 29 7.5 32 1.5 35 7.5 38.5 10 40.5 19Z" fill="url(#brass)" stroke="#8A6420" stroke-width="1" stroke-linejoin="round"/>
+      <circle cx="32" cy="12" r="1.6" fill="#A3172B"/>
+      <g fill="none" stroke="#8A6420" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22.5 19.5H41.5"/>
+        <path d="M23.5 21C13 14 3.5 21 6.5 32 8.5 40 17 41 24 35.5"/>
+        <path d="M40.5 21C51 14 60.5 21 57.5 32 55.5 40 47 41 40 35.5"/>
+        <path d="M23.5 20.5C22 27 22.5 33 26 37.5 27.5 39.5 29.5 39 30 37.5"/>
+        <path d="M40.5 20.5C42 27 41.5 33 38 37.5"/>
+        <path d="M27 26.5Q29 25 31 26.5M33 26.5Q35 25 37 26.5"/>
+        <path d="M30 28.5C29.5 38 31 46 35.5 52 38.5 56 43.5 55.5 45 51.5 46 48.5 42.5 47 41.5 49.5"/>
+        <path d="M34.5 28.5C34.5 37 35.5 42.5 39.5 46.5"/>
+        <path d="M38 37.5C40.5 38.5 42.5 40.5 43.5 43.5"/>
+        <path d="M26.5 37.5L24.5 39"/>
+      </g>
+      <path d="M30 22.5H34" stroke="#A3172B" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Small brass kuthuvilakku with a living flame -->
+    <symbol id="lamp" viewBox="0 -40 160 460">
+      <circle class="glow" cx="80" cy="110" r="96" fill="url(#halo)"/>
+      <g fill="url(#brass)">
+        <path d="M72 66H88L90 150H70Z"/>
+        <path d="M80 2C93 22 94 42 80 54 66 42 67 22 80 2Z"/>
+        <ellipse cx="80" cy="58" rx="16" ry="4.5"/><ellipse cx="80" cy="100" rx="9" ry="3"/>
+        <path d="M18 142L4 136 22 134C50 142 110 142 138 134L156 136 142 142C136 172 24 172 18 142Z"/>
+        <path d="M74 166H86L90 372H70Z"/>
+        <ellipse cx="80" cy="176" rx="17" ry="5"/><path d="M64 214C64 202 96 202 96 214 96 228 64 228 64 214Z"/><ellipse cx="80" cy="310" rx="15" ry="4"/><path d="M62 346C62 334 98 334 98 346 98 360 62 360 62 346Z"/>
+        <path d="M66 370H94C102 386 128 388 134 402H26C32 388 58 386 66 370Z"/>
+        <rect x="18" y="402" width="124" height="11" rx="3"/>
+      </g>
+      <ellipse cx="80" cy="139" rx="56" ry="6" fill="#5E3D10"/>
+      <g transform="translate(13 136)"><g class="flame"><path class="f1" d="M0 2C-13-6-11-22 0-44 11-22 13-6 0 2Z" fill="url(#fo)"/><path class="f2" d="M0 1C-9-5-8-16 0-31 8-16 9-5 0 1Z" fill="url(#fy)"/></g></g>
+      <g transform="translate(147 136)"><g class="flame"><path class="f1" d="M0 2C-13-6-11-22 0-44 11-22 13-6 0 2Z" fill="url(#fo)"/><path class="f2" d="M0 1C-9-5-8-16 0-31 8-16 9-5 0 1Z" fill="url(#fy)"/></g></g>
+      <g transform="translate(80 136)"><g class="flame"><path class="f1" d="M0 2C-13-6-11-22 0-44 11-22 13-6 0 2Z" fill="url(#fo)"/><path class="f2" d="M0 1C-9-5-8-16 0-31 8-16 9-5 0 1Z" fill="url(#fy)"/></g></g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ======================================================================
+     1. INTRO: DOOR REVEAL
+     ====================================================================== -->
+<div class="intro" id="intro" role="group" aria-label="Decorative entrance. The doors open by themselves.">
+  <div class="intro-inv"><svg class="ganesha" viewBox="0 0 64 64" role="img" aria-label="Lord Ganesha"><use href="#ganesha"/></svg><p>Sri Ganeshaya Namaha</p></div>
+  <div class="intro-floor"></div>
+  <div class="plantain l" aria-hidden="true"><svg role="presentation"><use href="#plantain"/></svg></div>
+  <div class="plantain r" aria-hidden="true"><svg role="presentation"><use href="#plantain"/></svg></div>
+  <div class="portal-wrap">
+    <button class="portal" id="portal" aria-label="Open the doors">
+      <span class="door l"><svg role="presentation"><use href="#door"/></svg></span>
+      <span class="door r"><svg role="presentation"><use href="#door"/></svg></span>
+    </button>
+    <svg class="frame" viewBox="0 0 440 700" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M176 54L190 36H203L214 10 220 0 226 10 237 36H250L264 54Z" fill="url(#wood)" stroke="#B8893B"/>
+      <circle cx="220" cy="30" r="4" fill="url(#brass)"/>
+      <rect x="-10" y="52" width="460" height="48" fill="url(#wood)"/>
+      <rect x="-10" y="52" width="460" height="3" fill="url(#brass)"/>
+      <rect x="-10" y="97" width="460" height="3" fill="url(#brass)"/>
+      <rect x="0" y="100" width="36" height="600" fill="url(#wood)"/>
+      <rect x="404" y="100" width="36" height="600" fill="url(#wood)"/>
+      <path d="M33.5 100V700M406.5 100V700" stroke="#B8893B" stroke-width="3"/>
+      <g id="frame-leaves" fill="#2F6B3A"></g>
+      <use href="#rosette" transform="translate(220 76) scale(.62)"/>
+    </svg>
+  </div>
+  <div class="threshold-k kolam" data-kolam="threshold" aria-hidden="true"></div>
+  <div class="intro-actions"><button class="skip" id="skip">Skip</button></div>
+</div>
+
+<!-- ======================================================================
+     2. THE INVITATION: everything on one screen
+     ====================================================================== -->
+<main class="card" id="main" tabindex="-1">
+  <div class="inv in"><svg class="ganesha" viewBox="0 0 64 64" role="img" aria-label="Lord Ganesha"><use href="#ganesha"/></svg><p>Sri Ganeshaya Namaha</p></div>
+  <div class="thoranam-wrap" aria-hidden="true"><svg class="thoranam" id="thoranam"></svg></div>
+
+  <div class="body">
+    <div class="bg-kolam kolam" id="heroKolam" data-kolam="hero" aria-hidden="true"></div>
+
+    <div class="block">
+      <p class="pre in" style="--d:1">With love, we invite you to the</p>
+      <h1 class="title in" style="--d:2">
+        <span class="foil">Grahapravesham<span class="sweep" aria-hidden="true"><span class="sweep-in">Grahapravesham</span></span></span>
+      </h1>
+      <p class="sub in" style="--d:3">of our new home</p>
+      <svg class="lamp l" role="presentation"><use href="#lamp"/></svg>
+      <svg class="lamp r" role="presentation"><use href="#lamp"/></svg>
+    </div>
+
+    <div class="block in" style="--d:4">
+      <p class="house"><span data-bind="houseName" data-ph="⟦HOUSE NAME⟧" class="ph">⟦HOUSE NAME⟧</span></p>
+      <p class="tagline"><span data-bind="houseTagline" data-ph="⟦TAGLINE⟧" class="ph">⟦TAGLINE⟧</span></p>
+    </div>
+
+    <div class="rule in" style="--d:5" aria-hidden="true"><div class="kolam" data-kolam="divider"></div></div>
+
+    <div class="block in" style="--d:6">
+      <p class="when"><span data-bind="dateLong" data-ph="⟦DATE⟧" class="ph">⟦DATE⟧</span></p>
+      <p class="time"><span data-bind="timeLine" data-ph="⟦TIME⟧" class="ph">⟦TIME⟧</span></p>
+    </div>
+
+    <div class="block in" style="--d:7">
+      <span class="lbl">Venue</span>
+      <p class="addr"><span data-bind="venueAddress" data-ph="⟦VENUE ADDRESS⟧" class="ph">⟦VENUE ADDRESS⟧</span></p>
+    </div>
+
+    <div class="block in" style="--d:8">
+      <span class="lbl">Your hosts</span>
+      <p class="hosts"><span data-bind="hosts" data-ph="⟦HOST NAMES⟧" class="ph">⟦HOST NAMES⟧</span></p>
+    </div>
+
+    <div class="block in" style="--d:9">
+      <p class="rsvp"><span class="lbl">RSVP</span><span id="rsvpLinks"></span></p>
+    </div>
+
+    <div class="btns in" style="--d:10">
+      <a class="btn" id="btnDirections" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c5-5.5 7.5-9 7.5-12a7.5 7.5 0 0 0-15 0c0 3 2.5 6.5 7.5 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a>
+      <button class="btn ghost" id="btnIcs" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>Calendar</button>
+      <button class="btn ghost" id="btnShare" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V4M8 7.5L12 3.5 16 7.5M5 13v6a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 19v-6"/></svg>Share</button>
+    </div>
+
+    <p class="foot in" style="--d:11"><b>Shubham</b> · Your presence is our blessing</p>
+  </div>
+</main>
+
+<!-- ======================================================================
+     PRINT CARD: only shown when printing
+     ====================================================================== -->
+<article class="print-card" aria-hidden="true">
+  <svg class="p-border" id="pBorder" viewBox="0 0 560 800"></svg>
+  <div class="p-inner">
+    <div class="p-inv"><svg class="p-ganesha" viewBox="0 0 64 64" role="img" aria-label="Lord Ganesha"><use href="#ganesha"/></svg><div>Sri Ganeshaya Namaha</div></div>
+    <div>
+      <div class="p-pre">With love, we invite you to the</div>
+      <div class="p-title">Grahapravesham</div>
+      <div class="p-sub">of our new home</div>
+    </div>
+    <div>
+      <div class="p-house"><span data-bind="houseName" data-ph="⟦HOUSE NAME⟧" class="ph">⟦HOUSE NAME⟧</span></div>
+      <div class="p-sub"><span data-bind="houseTagline" data-ph="⟦TAGLINE⟧" class="ph">⟦TAGLINE⟧</span></div>
+    </div>
+    <div class="p-when">
+      <div class="p-date"><span data-bind="dateLong" data-ph="⟦DATE⟧" class="ph">⟦DATE⟧</span></div>
+      <div class="p-time"><span data-bind="timeLine" data-ph="⟦TIME⟧" class="ph">⟦TIME⟧</span></div>
+    </div>
+    <div>
+      <div class="p-lbl">Venue</div>
+      <div style="white-space:pre-line"><span data-bind="venueAddress" data-ph="⟦VENUE ADDRESS⟧" class="ph">⟦VENUE ADDRESS⟧</span></div>
+    </div>
+    <div>
+      <div class="p-lbl">Your hosts</div>
+      <div class="p-hosts"><span data-bind="hosts" data-ph="⟦HOST NAMES⟧" class="ph">⟦HOST NAMES⟧</span></div>
+    </div>
+    <div>
+      <div class="p-lbl">RSVP</div>
+      <div><span data-bind="rsvpText" data-ph="⟦RSVP CONTACT⟧" class="ph">⟦RSVP CONTACT⟧</span></div>
+    </div>
+    <div class="p-foot">Shubham · Your presence is our blessing</div>
+  </div>
+</article>
+
+<!-- ======================================================================
+     FLOATING UI: petals, music, toast, proof panel, layout grid
+     ====================================================================== -->
+<div class="petals" id="petals" aria-hidden="true"></div>
+<div class="gridov" id="gridov" aria-hidden="true"></div>
+<button class="music" id="music" type="button" aria-pressed="false" aria-label="Play background music" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/><path class="mute" d="M3 3l18 18"/></svg>
+</button>
+<div class="toast" id="toast" role="status"></div>
+
+<aside class="proof" id="proof" aria-label="Proof mode" data-open="false" hidden>
+  <button class="proof-bar" id="proofBar" type="button" aria-expanded="false">
+    <b>Proof</b><span id="proofCount"></span><span class="vw" id="proofVw"></span>
+    <svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8l4-4 4 4"/></svg>
+  </button>
+  <div class="proof-body">
+    <ul class="proof-list" id="proofList"></ul>
+    <label class="sw">Highlight placeholders<input type="checkbox" id="tHl"></label>
+    <label class="sw">Show layout grid<input type="checkbox" id="tGrid"></label>
+    <label class="sw">Reduce motion preview<input type="checkbox" id="tRm"></label>
+    <button class="proof-act" id="replay" type="button">Replay door and kolam</button>
+  </div>
+</aside>
+
+<script>
+/* ==========================================================================
+   CONFIG: everything that changes lives here. See HOW TO FILL IN at the top.
+   Leave a value as "" and it shows as a ⟦PLACEHOLDER⟧ on the page.
+   ========================================================================== */
+const CONFIG = {
+  proofMode: false,           // true shows the Proof panel for checking
+
+  hosts: "Vijayalakshmi Subramanian & Regupathi Seetharaman",
+  houseName: "Sai Anughraha",
+  houseTagline: "A home filled with divine blessing",
+
+  date: "2026-11-20",         // ISO, YYYY-MM-DD
+  muhurthamStart: "08:00",    // 24-hour
+  muhurthamEnd: "",           // blank shows "onwards"
+  timezoneOffset: "+05:30",   // India time, so the calendar entry is right for guests abroad
+
+  venueAddress: "Door No. C204, 78, 14 A, Kamarajar Salai, Pammal Village, Pallavaram, Chennai, Tamil Nadu 600043",
+  mapsUrl: "",                // optional: a Google Maps share link. Blank searches the address.
+
+  // Each number becomes a tap-to-call link
+  rsvpPhones: ["+91 98792 78310", "+91 99784 45836"],
+
+  musicEnabled: false,        // true shows a music button, muted until tapped
+  musicUrl: "",               // an .mp3 of nadaswaram or veena, your own or licensed
+  shareUrl: "",               // public link to this page; blank uses the current address
+};
+
+const root = document.documentElement;
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const reduced = () => root.classList.contains("rm");
+
+/* ==========================================================================
+   KOLAM ENGINE
+   A real sikku kolam: one line weaving around a grid of pulli (dots). The line
+   travels diagonally and reflects off the edge and off a few inner "mirrors".
+   The mirror sets below are chosen so each kolam closes as ONE unbroken loop.
+   ========================================================================== */
+const KOLAMS = {
+  divider:   { n: 3, stroke: "#B8893B", dot: "#A3172B", w: .18, t: 1.6, m: "2,5v 1,2h 4,1v 5,4h" },
+  threshold: { n: 5, stroke: "#FFFDF6", dot: "#FFFDF6", w: .13, t: 1.2, m: "8,7v 3,8h 2,3v 7,2h 4,7h 3,4v 6,3h 7,6v" },
+  hero:      { n: 7, stroke: "#B8893B", dot: "#A3172B", w: .04, t: 5, m: "13,12v 2,13h 1,2v 12,1h 9,10h 4,9v 5,4h 10,5v 6,13v 1,6h 8,1v 13,8h 11,6h 8,11v 3,8h 6,3v" },
+};
+
+function kolamLoops(W, H, mirrors) {
+  const seen = new Set(), loops = [];
+  const key = (x, y, a, b) => `${x},${y},${a},${b}`;
+  const inside = (x, y) => x >= 0 && y >= 0 && x <= 2 * W && y <= 2 * H;
+  for (let y = 0; y <= 2 * H; y++) for (let x = 0; x <= 2 * W; x++) {
+    if ((x + y) % 2 === 0) continue;
+    for (const [a0, b0] of [[1, 1], [1, -1], [-1, 1], [-1, -1]]) {
+      if (!inside(x + a0, y + b0) || seen.has(key(x, y, a0, b0))) continue;
+      let px = x, py = y, a = a0, b = b0;
+      const pts = [];
+      do {
+        seen.add(key(px, py, a, b));
+        px += a; py += b;
+        seen.add(key(px, py, -a, -b));
+        pts.push([px, py]);
+        if (px === 0 || px === 2 * W) a = -a;
+        if (py === 0 || py === 2 * H) b = -b;
+        const m = mirrors[`${px},${py}`];
+        if (m === "h") b = -b; else if (m === "v") a = -a;
+      } while (!(px === x && py === y && a === a0 && b === b0));
+      loops.push(pts);
+    }
+  }
+  return loops;
+}
+
+function parseMirrors(str) {
+  const m = {};
+  str.split(" ").forEach(t => { m[t.slice(0, -1)] = t.slice(-1); });
+  return m;
+}
+
+/* Rounded path through a loop, with a slight wobble so it reads as hand-drawn */
+function loopPath(pts, seed, wobble) {
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647 - .5;
+  const p = pts.map(([x, y]) => [x + rnd() * wobble, y + rnd() * wobble]);
+  const mid = (a, b) => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+  const f = q => q.map(v => v.toFixed(2)).join(" ");
+  let d = "M" + f(mid(p[p.length - 1], p[0]));
+  p.forEach((q, i) => { d += `Q${f(q)} ${f(mid(q, p[(i + 1) % p.length]))}`; });
+  return d + "Z";
+}
+
+function mountKolam(el) {
+  const k = KOLAMS[el.dataset.kolam], n = k.n;
+  const loops = kolamLoops(n, n, parseMirrors(k.m));
+  let dots = "", i = 0;
+  for (let y = 0; y < n; y++) for (let x = 0; x < n; x++) {
+    dots += `<circle class="k-dot" style="--i:${i++}" cx="${2 * x + 1}" cy="${2 * y + 1}" r="${(k.w * 1.1).toFixed(3)}" fill="${k.dot}"/>`;
+  }
+  const lines = loops.map((l, j) =>
+    `<path class="k-line" pathLength="1" d="${loopPath(l, 4711 + j, .1)}" stroke="${k.stroke}" stroke-width="${k.w}"/>`).join("");
+  el.innerHTML = `<svg viewBox="-.2 -.2 ${2 * n + .4} ${2 * n + .4}" role="presentation">${dots}${lines}</svg>`;
+  el.style.setProperty("--t", k.t + "s");
+  el.style.setProperty("--wait", Math.min(n * n * 14 + 300, 1200) + "ms");
+}
+$$("[data-kolam]").forEach(mountKolam);
+
+/* Print border: the same line, kept in a band around the page by a wall of mirrors */
+(function printBorder() {
+  const W = 28, H = 40, B = 2, m = {};
+  for (let x = 2 * B + 1; x < 2 * (W - B); x += 2) { m[`${x},${2 * B}`] = "h"; m[`${x},${2 * (H - B)}`] = "h"; }
+  for (let y = 2 * B + 1; y < 2 * (H - B); y += 2) { m[`${2 * B},${y}`] = "v"; m[`${2 * (W - B)},${y}`] = "v"; }
+  const band = kolamLoops(W, H, m).filter(l => l.some(([x, y]) => x < 2 * B || y < 2 * B || x > 2 * (W - B) || y > 2 * (H - B)));
+  const s = 10;
+  const path = band.map((l, i) => loopPath(l.map(([x, y]) => [x * s, y * s]), 91 + i, 0)).join("");
+  let dots = "";
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    if (x >= B && y >= B && x < W - B && y < H - B) continue;
+    dots += `<circle cx="${(2 * x + 1) * s}" cy="${(2 * y + 1) * s}" r="1.6"/>`;
+  }
+  $("#pBorder").innerHTML = `<g fill="#A3172B">${dots}</g><path d="${path}" fill="none" stroke="#B8893B" stroke-width="1.6"/>`;
+})();
+
+/* ==========================================================================
+   THORANAM
+   ========================================================================== */
+function buildThoranam() {
+  const step = 24, n = Math.min(Math.ceil(Math.max(innerWidth, screen.width) / step) + 4, 90);
+  const w = n * step, swag = step * 9;
+  const sag = x => 3 + 15 * Math.abs(Math.sin(Math.PI * x / swag));
+  let string = "M0 3", leaves = "", flowers = "";
+  for (let x = 0; x <= w; x += 8) string += `L${x} ${sag(x).toFixed(1)}`;
+  for (let i = 0; i < n; i++) {
+    const x = i * step + step / 2, y = sag(x);
+    const tilt = ((i * 37) % 13 - 6).toFixed(0), scale = (.84 + ((i * 53) % 9) / 40).toFixed(2);
+    leaves += `<g transform="translate(${x} ${y.toFixed(1)}) rotate(${tilt})"><g class="th-leaf" style="--i:${i}"><use href="#m-leaf" fill="${i % 2 ? "#3E8349" : "#2F6B3A"}" transform="scale(${scale})"/></g></g>`;
+  }
+  for (let x = 0; x <= w; x += swag) {
+    flowers += `<g transform="translate(${x} 7)"><circle r="8" fill="#E3A82B"/><circle r="5" fill="#E8862B"/><circle r="2" fill="#A3172B"/></g>`;
+  }
+  const svg = $("#thoranam");
+  svg.setAttribute("width", w); svg.setAttribute("viewBox", `0 0 ${w} 92`);
+  svg.innerHTML = `${leaves}<path d="${string}" fill="none" stroke="#8A6420" stroke-width="1.2"/>${flowers}`;
+
+  $("#frame-leaves").innerHTML = Array.from({ length: 15 }, (_, i) =>
+    `<use href="#m-leaf" transform="translate(${38 + i * 26} 100) scale(.62)" fill="${i % 2 ? "#3E8349" : "#2F6B3A"}"/>`).join("");
+}
+
+/* ==========================================================================
+   DATE & TIME
+   ========================================================================== */
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+function parseDate(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
+  return m ? { y: +m[1], mo: +m[2] - 1, d: +m[3], dow: new Date(+m[1], +m[2] - 1, +m[3]).getDay() } : null;
+}
+const clock = t => {
+  const m = /^(\d{1,2}):(\d{2})$/.exec(t || "");
+  return m ? { h: +m[1], m: m[2] } : null;
+};
+const timeEn = c => `${c.h % 12 || 12}:${c.m} ${c.h < 12 ? "AM" : "PM"}`;
+const at = (c, t) => new Date(`${c.date}T${String(t.h).padStart(2, "0")}:${t.m}:00${c.timezoneOffset}`);
+
+function deriveView(c) {
+  const d = parseDate(c.date), s = clock(c.muhurthamStart), e = clock(c.muhurthamEnd);
+  return {
+    ...c,
+    dateLong: d && `${DAYS[d.dow]}, ${d.d} ${MONTHS[d.mo]} ${d.y}`,
+    timeLine: s && (e ? `${timeEn(s)} – ${timeEn(e)}` : `From ${timeEn(s)} onwards`),
+    rsvpText: c.rsvpPhones.filter(Boolean).join("  ·  "),
+    start: d && s ? at(c, s) : null,
+    end: d && s && e ? at(c, e) : null,
+  };
+}
+
+/* ==========================================================================
+   RENDER: writes CONFIG into the page
+   ========================================================================== */
+const view = deriveView(CONFIG);
+
+function setAction(el, href) {
+  if (href) { el.href = href; return; }
+  el.removeAttribute("href");
+  el.setAttribute("aria-disabled", "true"); el.setAttribute("role", "link"); el.setAttribute("tabindex", "0");
+  el.dataset.tip = "Coming soon";
+}
+
+function render() {
+  $$("[data-bind]").forEach(el => {
+    const v = view[el.dataset.bind];
+    el.textContent = v || el.dataset.ph;
+    el.classList.toggle("ph", !v);
+  });
+  const phones = view.rsvpPhones.filter(Boolean);
+  $("#rsvpLinks").innerHTML = phones.length
+    ? phones.map(p => `<a class="tel" href="tel:${p.replace(/[^\d+]/g, "")}" aria-label="Call ${p}">${p}</a>`).join('<span class="tel-sep" aria-hidden="true"> · </span>')
+    : '<span class="ph">⟦RSVP CONTACT⟧</span>';
+  setAction($("#btnDirections"), view.mapsUrl || (view.venueAddress &&
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(view.venueAddress.replace(/\n/g, " "))}`));
+  if (!view.start) { $("#btnIcs").setAttribute("aria-disabled", "true"); $("#btnIcs").dataset.tip = "Coming soon"; }
+}
+
+/* ==========================================================================
+   CALENDAR: an .ics file built from CONFIG (Apple, Google and Outlook all read it)
+   ========================================================================== */
+const utcStamp = d => d.toISOString().replace(/[-:]|\.\d{3}/g, "");
+function downloadIcs() {
+  const end = view.end || new Date(view.start.getTime() + 3 * 36e5);
+  const text = s => s.replace(/\\/g, "\\\\").replace(/([,;])/g, "\\$1").replace(/\n/g, "\\n");
+  const fold = line => {   /* iCalendar lines wrap at 75 characters */
+    const out = [];
+    for (let s = line; s.length; s = s.slice(out.length === 1 ? 74 : 73)) out.push((out.length ? " " : "") + s.slice(0, out.length ? 73 : 74));
+    return out.join("\r\n");
+  };
+  const title = `Grahapravesham${view.houseName ? ` – ${view.houseName}` : ""}`;
+  const ics = [
+    "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Grahapravesham Invitation//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
+    "BEGIN:VEVENT",
+    `UID:grahapravesham-${utcStamp(view.start)}@invitation`,
+    `DTSTAMP:${utcStamp(new Date())}`,
+    `DTSTART:${utcStamp(view.start)}`,
+    `DTEND:${utcStamp(end)}`,
+    `SUMMARY:${text(title)}`,
+    `LOCATION:${text(view.venueAddress.replace(/\n/g, " "))}`,
+    `DESCRIPTION:${text(`With love, we invite you. ${view.hosts}`)}`,
+    "END:VEVENT", "END:VCALENDAR",
+  ].map(fold).join("\r\n") + "\r\n";
+  const url = URL.createObjectURL(new Blob([ics], { type: "text/calendar;charset=utf-8" }));
+  const a = Object.assign(document.createElement("a"), { href: url, download: "grahapravesham.ics" });
+  document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
+
+/* ==========================================================================
+   AMBIENT JASMINE PETALS: sparse, 8 on phones, 12 on desktop
+   ========================================================================== */
+function startPetals() {
+  const box = $("#petals");
+  box.innerHTML = "";
+  if (reduced()) return;
+  const n = innerWidth < 760 ? 8 : 12;
+  for (let i = 0; i < n; i++) {
+    const p = document.createElement("i");
+    p.className = "petal";
+    const dur = 17 + Math.random() * 12;
+    p.style.cssText = `left:${Math.random() * 100}%;--s:${7 + Math.random() * 5}px;--dur:${dur}s;--delay:${-Math.random() * dur}s;--dx:${(Math.random() * 110 - 55).toFixed(0)}px;--rot:${(Math.random() * 360 + 180).toFixed(0)}deg`;
+    box.append(p);
+  }
+}
+
+/* ==========================================================================
+   INTRO: doors open on tap, or by themselves after 1.5 s
+   ========================================================================== */
+let opened = false, autoTimer, endTimer;
+function finishIntro() {
+  clearTimeout(autoTimer); clearTimeout(endTimer);
+  opened = true;
+  const hadFocus = $("#intro").contains(document.activeElement);
+  root.classList.remove("intro-on", "opening");
+  root.classList.add("entered");
+  $$(".card .kolam").forEach(k => k.classList.add("draw"));
+  if (hadFocus) $("#main").focus({ preventScroll: true });
+  startPetals();
+}
+function openDoors() {
+  if (opened) return;
+  opened = true;
+  clearTimeout(autoTimer);
+  root.classList.add("opening");
+  endTimer = setTimeout(finishIntro, reduced() ? 420 : 1820);
+}
+function playIntro() {
+  opened = false;
+  scrollTo(0, 0);
+  root.classList.remove("entered", "opening");
+  root.classList.add("intro-on");
+  $$(".card .kolam").forEach(k => { k.classList.remove("draw"); void k.offsetWidth; });
+  $(".threshold-k").classList.add("draw");
+  autoTimer = setTimeout(openDoors, 1500);
+}
+
+/* ==========================================================================
+   SHARE, TOOLTIPS, MUSIC
+   ========================================================================== */
+function toast(text) {
+  const t = $("#toast");
+  t.textContent = text; t.classList.add("on");
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("on"), 2200);
+}
+function flashTip(el) {
+  el.classList.add("tip-on");
+  clearTimeout(el._h); el._h = setTimeout(() => el.classList.remove("tip-on"), 1800);
+}
+async function share() {
+  const url = view.shareUrl || location.href;
+  const data = { title: "Grahapravesham", text: "With love, we invite you to our Grahapravesham.", url };
+  if (navigator.share) {
+    try { await navigator.share(data); return; }
+    catch (err) { if (err.name === "AbortError") return; }
+  }
+  try { await navigator.clipboard.writeText(url); }
+  catch {
+    const ta = Object.assign(document.createElement("textarea"), { value: url });
+    document.body.append(ta); ta.select(); document.execCommand("copy"); ta.remove();
+  }
+  toast("Link copied");
+}
+
+function setupMusic() {
+  const btn = $("#music");
+  btn.hidden = !CONFIG.musicEnabled;
+  let audio;
+  btn.addEventListener("click", () => {
+    if (!CONFIG.musicUrl) return toast("Music coming soon");
+    if (!audio) { audio = new Audio(CONFIG.musicUrl); audio.loop = true; audio.volume = .35; }
+    const playing = btn.getAttribute("aria-pressed") === "true";
+    if (playing) audio.pause(); else audio.play();
+    btn.setAttribute("aria-pressed", String(!playing));
+    btn.setAttribute("aria-label", playing ? "Play background music" : "Pause background music");
+  });
+}
+
+/* ==========================================================================
+   PROOF MODE
+   ========================================================================== */
+const PROOF_FIELDS = [
+  ["hosts", "Host names"], ["houseName", "House name"], ["houseTagline", "Tagline"],
+  ["date", "Date"], ["muhurthamStart", "Start time"], ["venueAddress", "Venue address"],
+  ["rsvpText", "RSVP numbers"], ["mapsUrl", "Maps link (optional)"], ["shareUrl", "Share link"], ["musicUrl", "Music file (optional)"],
+];
+function setupProof() {
+  const panel = $("#proof");
+  panel.hidden = !CONFIG.proofMode;
+  if (!CONFIG.proofMode) return;
+  const rows = PROOF_FIELDS.map(([k, label]) => [label, !!view[k]]);
+  $("#proofList").innerHTML = rows.map(([label, ok]) =>
+    `<li><span>${label}</span><span class="${ok ? "ok" : "no"}">${ok ? "✓" : "⚠"}</span></li>`).join("");
+  $("#proofCount").textContent = `${rows.filter(r => r[1]).length}/${rows.length}`;
+  const open = v => { panel.dataset.open = v; $("#proofBar").setAttribute("aria-expanded", v); };
+  open(innerWidth >= 760);       /* starts folded on phones so it does not cover the design */
+  $("#proofBar").addEventListener("click", () => open(panel.dataset.open !== "true"));
+  const vw = () => { $("#proofVw").textContent = `${innerWidth}×${innerHeight}`; };
+  vw(); addEventListener("resize", vw);
+  $("#gridov").innerHTML = "<i></i>".repeat(12);
+  $("#tHl").addEventListener("change", e => root.classList.toggle("hl", e.target.checked));
+  $("#tGrid").addEventListener("change", e => root.classList.toggle("grid", e.target.checked));
+  $("#tRm").checked = reduced();
+  $("#tRm").addEventListener("change", e => { root.classList.toggle("rm", e.target.checked); startPetals(); });
+  $("#replay").addEventListener("click", playIntro);
+}
+
+/* ==========================================================================
+   START
+   ========================================================================== */
+buildThoranam();
+render();
+setupMusic();
+setupProof();
+
+document.addEventListener("click", e => {
+  const off = e.target.closest('[aria-disabled="true"]');
+  if (off) { e.preventDefault(); e.stopImmediatePropagation(); flashTip(off); }
+}, true);
+$("#btnIcs").addEventListener("click", downloadIcs);
+$("#btnShare").addEventListener("click", share);
+$("#intro").addEventListener("click", e => { if (!e.target.closest("#skip")) openDoors(); });
+$("#skip").addEventListener("click", finishIntro);
+
+playIntro();
+</script>
+</body>
+</html>
