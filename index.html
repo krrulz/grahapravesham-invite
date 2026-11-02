@@ -318,7 +318,7 @@ html.rm .sweep { display: none; }
 .time { margin-top: 2px; color: var(--kumkum); font-size: .9375rem; font-weight: 600; letter-spacing: .04em; }
 .addr { color: var(--body); font-size: .875rem; line-height: 1.36; white-space: pre-line; text-wrap: balance; }
 .lbl { display: block; line-height: 1.4; color: var(--gold-ink); font-size: .6875rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 2px; }
-.hosts { color: var(--maroon); font: 500 clamp(1.125rem, min(5vw, 2.8svh), 1.375rem)/1.14 var(--serif); text-wrap: balance; }
+.hosts { margin-bottom: 4px; color: var(--maroon); font: 500 clamp(1.125rem, min(5vw, 2.8svh), 1.375rem)/1.14 var(--serif); text-wrap: balance; }
 .rsvp { font-size: .875rem; line-height: 1; }
 .rsvp .lbl { display: inline; margin: 0 4px 0 0; }
 .tel { display: inline-flex; align-items: center; min-height: 44px; padding: 0 2px; color: var(--kumkum); font-weight: 600; text-decoration: underline; text-decoration-color: var(--hair); text-underline-offset: 4px; }
@@ -691,11 +691,12 @@ html.grid .gridov { display: grid; }
     <div class="bg-kolam kolam" id="heroKolam" data-kolam="hero" aria-hidden="true"></div>
 
     <div class="block">
-      <p class="pre in" style="--d:1">With love, we invite you to the</p>
-      <h1 class="title in" style="--d:2">
+      <p class="hosts in" style="--d:1"><span data-bind="hosts" data-ph="⟦HOST NAMES⟧" class="ph">⟦HOST NAMES⟧</span></p>
+      <p class="pre in" style="--d:2">with love, invite you to the</p>
+      <h1 class="title in" style="--d:3">
         <span class="foil">Grahapravesham<span class="sweep" aria-hidden="true"><span class="sweep-in">Grahapravesham</span></span></span>
       </h1>
-      <p class="sub in" style="--d:3">of our new home</p>
+      <p class="sub in" style="--d:3">of their new home</p>
       <svg class="lamp l" role="presentation"><use href="#lamp"/></svg>
       <svg class="lamp r" role="presentation"><use href="#lamp"/></svg>
     </div>
@@ -715,11 +716,6 @@ html.grid .gridov { display: grid; }
     <div class="block in" style="--d:7">
       <span class="lbl">Venue</span>
       <p class="addr"><span data-bind="venueAddress" data-ph="⟦VENUE ADDRESS⟧" class="ph">⟦VENUE ADDRESS⟧</span></p>
-    </div>
-
-    <div class="block in" style="--d:8">
-      <span class="lbl">Your hosts</span>
-      <p class="hosts"><span data-bind="hosts" data-ph="⟦HOST NAMES⟧" class="ph">⟦HOST NAMES⟧</span></p>
     </div>
 
     <div class="block in" style="--d:9">
@@ -744,9 +740,10 @@ html.grid .gridov { display: grid; }
   <div class="p-inner">
     <div class="p-inv"><svg class="p-ganesha" viewBox="0 0 64 64" role="img" aria-label="Lord Ganesha"><use href="#ganesha"/></svg><div>Sri Ganeshaya Namaha</div></div>
     <div>
-      <div class="p-pre">With love, we invite you to the</div>
+      <div class="p-hosts"><span data-bind="hosts" data-ph="⟦HOST NAMES⟧" class="ph">⟦HOST NAMES⟧</span></div>
+      <div class="p-pre">with love, invite you to the</div>
       <div class="p-title">Grahapravesham</div>
-      <div class="p-sub">of our new home</div>
+      <div class="p-sub">of their new home</div>
     </div>
     <div>
       <div class="p-house"><span data-bind="houseName" data-ph="⟦HOUSE NAME⟧" class="ph">⟦HOUSE NAME⟧</span></div>
@@ -759,10 +756,6 @@ html.grid .gridov { display: grid; }
     <div>
       <div class="p-lbl">Venue</div>
       <div style="white-space:pre-line"><span data-bind="venueAddress" data-ph="⟦VENUE ADDRESS⟧" class="ph">⟦VENUE ADDRESS⟧</span></div>
-    </div>
-    <div>
-      <div class="p-lbl">Your hosts</div>
-      <div class="p-hosts"><span data-bind="hosts" data-ph="⟦HOST NAMES⟧" class="ph">⟦HOST NAMES⟧</span></div>
     </div>
     <div>
       <div class="p-lbl">RSVP</div>
