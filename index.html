@@ -21,7 +21,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Grahapravesham Invitation</title>
 <meta name="description" content="With love, we invite you to the Grahapravesham of Sai Anughraha on Friday, 20 November 2026, from 8:00 AM.">
-<meta name="theme-color" content="#FBF6EC">
+<meta name="theme-color" content="#3E0C15">
 <meta name="color-scheme" content="light">
 
 <!-- Open Graph: link preview for WhatsApp (crawlers do not run JS, so these are edited here) -->
@@ -38,7 +38,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23A3172B'/%3E%3Cpath d='M16 5c6 7 7 14 0 22C9 19 10 12 16 5z' fill='%23E3A82B'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 
 <script>
   /* Runs before first paint so the door overlay and motion mode never flash */
@@ -68,14 +68,43 @@
   --sans: "Manrope", "Inter", system-ui, sans-serif;
   /* vertical rhythm that shrinks on short phones so the card fits one screen */
   --gap: clamp(4px, 1.6svh, 20px);
+
+  /* Colour roles for the invitation card. Theme "ivory" (default). */
+  --bg: #FBF6EC;
+  --text: #2B0A0F;          /* names, date, address: about 15:1 on the background */
+  --text-2: #4A1C22;        /* italic supporting lines */
+  --accent: #9A1428;        /* house name, time, phone links */
+  --label: #74510F;         /* small gold labels, darkened for AA */
+  --title-a: #6B4A0E; --title-b: #8A6420; --title-shine: #B8862C;
+  --line: rgba(138, 100, 32, .45);
+  --btn-bg: #9A1428; --btn-fg: #FFF9EF; --ghost-fg: #9A1428; --ghost-bd: #9A1428;
+  --kolam-line: #B8893B; --kolam-dot: #A3172B; --kolam-op: .12;
+}
+/* Kumkum silk: ivory and bright gold on deep maroon */
+html[data-theme="silk"] {
+  --bg: #3E0C15;
+  --text: #FFF7E8; --text-2: #F1DEC4; --accent: #F4C55A; --label: #E7BE6E;
+  --title-a: #F8DD95; --title-b: #E9B44C; --title-shine: #FFF3CF;
+  --line: rgba(231, 190, 110, .5);
+  --btn-bg: #F4C55A; --btn-fg: #3A0F14; --ghost-fg: #FFF7E8; --ghost-bd: #E7BE6E;
+  --kolam-line: #E7BE6E; --kolam-dot: #E7BE6E; --kolam-op: .14;
+}
+/* Temple white: near-black text on white, kumkum title. Highest contrast. */
+html[data-theme="white"] {
+  --bg: #FFFFFF;
+  --text: #1C1416; --text-2: #3B2A2D; --accent: #8E1024; --label: #6B4A0E;
+  --title-a: #8E1024; --title-b: #A3172B; --title-shine: #C8364C;
+  --line: rgba(142, 16, 36, .3);
+  --btn-bg: #8E1024; --btn-fg: #FFFFFF; --ghost-fg: #8E1024; --ghost-bd: #8E1024;
+  --kolam-line: #B8893B; --kolam-dot: #A3172B; --kolam-op: .1;
 }
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scrollbar-gutter: stable; background: var(--ivory); }
+html { -webkit-text-size-adjust: 100%; scrollbar-gutter: stable; background: var(--bg); }
 html.intro-on { overflow: hidden; }
 body {
   margin: 0;
-  background: var(--ivory);
-  color: var(--body);
+  background: var(--bg);
+  color: var(--text);
   font: 400 1rem/1.55 var(--sans);
   font-variant-numeric: lining-nums;
   overflow-x: clip;
@@ -122,6 +151,7 @@ html.intro-on .intro {
   background: linear-gradient(#F7EDD9, #EFE0C2 74%);
   transform-origin: 50% 54%;
 }
+.intro-inv .ganesha { color: var(--gold-ink); }
 .intro-inv {
   position: absolute;
   inset: max(18px, env(safe-area-inset-top)) 0 auto;
@@ -234,6 +264,8 @@ html.rm .door { transition: none; }
 .k-line { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: var(--len) var(--len); stroke-dashoffset: var(--len); opacity: 0; }
 .kolam .k-line.done { stroke-dasharray: none; stroke-dashoffset: 0; opacity: 1; animation: none; }
 .k-dot { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.card .k-line { stroke: var(--kolam-line); }
+.card .k-dot { fill: var(--kolam-dot); }
 .kolam.draw .k-dot { animation: dotIn 500ms var(--ease) both; animation-delay: calc(var(--i) * 14ms); }
 .kolam.draw .k-line { animation: trace var(--t, 3s) cubic-bezier(.45, .05, .55, .95) var(--wait, .4s) forwards; }
 @keyframes dotIn { from { opacity: 0; transform: scale(.2); } to { opacity: 1; transform: none; } }
@@ -246,6 +278,7 @@ html.rm .k-dot, html.rm .kolam.draw .k-dot { opacity: 1; animation: none; }
    ========================================================================== */
 .card {
   position: relative;
+  z-index: 1;               /* above the falling petals */
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -260,13 +293,13 @@ html.rm .k-dot, html.rm .kolam.draw .k-dot { opacity: 1; animation: none; }
   top: 0;
   bottom: 0;
   width: 5px;
-  border-inline: 1px solid var(--hair);
+  border-inline: 1px solid var(--line);
   pointer-events: none;
 }
 .card::before { left: 8px; }
 .card::after { right: 8px; }
-.ganesha { display: block; width: clamp(28px, 4.6svh, 52px); height: auto; margin: 0 auto 1px; }
-.inv { padding: max(4px, env(safe-area-inset-top)) 16px 0; color: var(--gold-ink); font: italic 500 1rem/1.3 var(--serif); }
+.ganesha { color: var(--label); display: block; width: clamp(28px, 4.6svh, 52px); height: auto; margin: 0 auto 1px; }
+.inv { padding: max(4px, env(safe-area-inset-top)) 16px 0; color: var(--label); font: italic 600 1.0625rem/1.3 var(--serif); }
 .body {
   position: relative;
   flex: 1;
@@ -277,17 +310,17 @@ html.rm .k-dot, html.rm .kolam.draw .k-dot { opacity: 1; animation: none; }
   gap: var(--gap);
   padding: 2px 0 var(--gap);
 }
-.bg-kolam { position: absolute; left: 50%; top: 40%; width: min(90vw, 50svh, 500px); translate: -50% -50%; opacity: .24; pointer-events: none; }
+.bg-kolam { position: absolute; left: 50%; top: 40%; width: min(90vw, 50svh, 500px); translate: -50% -50%; opacity: var(--kolam-op); pointer-events: none; }
 .block { position: relative; }
-.bless { margin-bottom: 2px; color: var(--gold-ink); font-size: .75rem; font-weight: 600; letter-spacing: .06em; }
-.pre { color: var(--maroon); font: italic 500 1.0625rem/1.25 var(--serif); }
+.bless { margin-bottom: 2px; color: var(--label); font-size: .8125rem; font-weight: 600; letter-spacing: .02em; }
+.pre { color: var(--text-2); font: italic 600 1.0625rem/1.25 var(--serif); }
 .title { margin: 2px 0; font-weight: 500; }
 .foil {
   position: relative;
   display: block;
-  font: 600 clamp(2.3rem, min(12.6vw, 6.6svh), 4.5rem)/1.02 var(--serif);
+  font: 700 clamp(2.3rem, min(12.6vw, 6.6svh), 4.5rem)/1.02 var(--serif);
   white-space: nowrap;
-  background: linear-gradient(100deg, #74500F, #A87A2C 42%, #7C5618 62%, #9C7026);
+  background: linear-gradient(100deg, var(--title-a), var(--title-b) 45%, var(--title-a) 70%, var(--title-b));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -297,7 +330,7 @@ html.rm .k-dot, html.rm .kolam.draw .k-dot { opacity: 1; animation: none; }
   inset: 0 auto 0 0;
   width: 40%;
   overflow: hidden;
-  color: #F7DF97;
+  color: var(--title-shine);
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 50%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 50%, transparent);
   transform: translateX(-100%);
@@ -308,22 +341,22 @@ html.rm .k-dot, html.rm .kolam.draw .k-dot { opacity: 1; animation: none; }
 @keyframes sweepOut { 0%, 12% { transform: translateX(-100%); } 42%, 100% { transform: translateX(250%); } }
 @keyframes sweepIn { 0%, 12% { transform: translateX(40%); } 42%, 100% { transform: translateX(-100%); } }
 html.rm .sweep { display: none; }
-.sub { color: var(--maroon); font: italic 500 1.125rem/1.15 var(--serif); }
-.house { color: var(--kumkum); font: 600 clamp(1.45rem, min(7vw, 3.7svh), 2.1rem)/1.1 var(--serif); letter-spacing: .14em; text-transform: uppercase; }
-.tagline { margin-top: 1px; color: var(--maroon); font: italic 500 1.0625rem/1.15 var(--serif); }
+.sub { color: var(--text-2); font: italic 600 1.125rem/1.15 var(--serif); }
+.house { color: var(--accent); font: 700 clamp(1.45rem, min(7vw, 3.7svh), 2.1rem)/1.1 var(--serif); letter-spacing: .14em; text-transform: uppercase; }
+.tagline { margin-top: 1px; color: var(--text-2); font: italic 600 1.0625rem/1.15 var(--serif); }
 .rule { display: flex; align-items: center; justify-content: center; gap: 14px; }
-.rule::before, .rule::after { content: ""; flex: 1; max-width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--hair)); }
+.rule::before, .rule::after { content: ""; flex: 1; max-width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--line)); }
 .rule::after { transform: scaleX(-1); }
 .rule .kolam { width: clamp(34px, 5.5svh, 48px); flex: none; }
-.when { color: var(--maroon); font: 600 clamp(1.25rem, min(6vw, 3.2svh), 1.7rem)/1.12 var(--serif); }
-.time { margin-top: 2px; color: var(--kumkum); font-size: .9375rem; font-weight: 600; letter-spacing: .04em; }
-.addr { color: var(--body); font-size: .875rem; line-height: 1.36; white-space: pre-line; text-wrap: balance; }
-.lbl { display: block; line-height: 1.4; color: var(--gold-ink); font-size: .6875rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 2px; }
-.hosts { margin-bottom: 4px; color: var(--maroon); font: 500 clamp(1.125rem, min(5vw, 2.8svh), 1.375rem)/1.14 var(--serif); text-wrap: balance; }
+.when { color: var(--text); font: 700 clamp(1.25rem, min(6vw, 3.2svh), 1.7rem)/1.12 var(--serif); }
+.time { margin-top: 2px; color: var(--accent); font-size: .9375rem; font-weight: 700; letter-spacing: .04em; }
+.addr { color: var(--text); font-size: .875rem; font-weight: 500; line-height: 1.36; white-space: pre-line; text-wrap: balance; }
+.lbl { display: block; line-height: 1.4; color: var(--label); font-size: .75rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 2px; }
+.hosts { margin-bottom: 4px; color: var(--text); font: 600 clamp(1.125rem, min(5vw, 2.8svh), 1.375rem)/1.14 var(--serif); text-wrap: balance; }
 .rsvp { font-size: .875rem; line-height: 1; }
 .rsvp .lbl { display: inline; margin: 0 4px 0 0; }
-.tel { display: inline-flex; align-items: center; min-height: 44px; padding: 0 2px; color: var(--kumkum); font-weight: 600; text-decoration: underline; text-decoration-color: var(--hair); text-underline-offset: 4px; }
-.tel-sep { color: var(--gold); }
+.tel { display: inline-flex; align-items: center; min-height: 44px; padding: 0 2px; color: var(--accent); font-weight: 700; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
+.tel-sep { color: var(--label); }
 .btns { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
 .btn {
   position: relative;
@@ -333,11 +366,11 @@ html.rm .sweep { display: none; }
   gap: 6px;
   min-height: 44px;
   padding: 0 14px;
-  border: 1px solid var(--kumkum);
+  border: 1px solid var(--btn-bg);
   border-radius: 99px;
-  background: var(--kumkum);
-  color: #FFF9EF;
-  font: 600 .8125rem/1.2 var(--sans);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font: 700 .8125rem/1.2 var(--sans);
   text-decoration: none;
   cursor: pointer;
   transition: transform 240ms var(--ease);
@@ -346,7 +379,7 @@ html.rm .sweep { display: none; }
 .btn:hover { transform: translateY(-1px); }
 .btn:active { transform: scale(.98); }
 .btn svg { width: 16px; height: 16px; flex: none; }
-.btn.ghost { background: transparent; color: var(--kumkum); }
+.btn.ghost { background: transparent; color: var(--ghost-fg); border-color: var(--ghost-bd); }
 .btn[aria-disabled="true"] { background: transparent; border: 1px dashed var(--gold); color: var(--gold-ink); cursor: default; transform: none; }
 .btn[data-tip]::after {
   content: attr(data-tip);
@@ -365,8 +398,8 @@ html.rm .sweep { display: none; }
   transition: opacity 240ms var(--ease), transform 240ms var(--ease);
 }
 .btn[data-tip]:hover::after, .btn[data-tip]:focus-visible::after, .btn.tip-on::after { opacity: 1; transform: translate(-50%, 0); }
-.foot { color: var(--body); font-size: .8125rem; }
-.foot b { color: var(--kumkum); font: italic 600 1.125rem/1.2 var(--serif); }
+.foot { color: var(--text-2); font-size: .8125rem; font-weight: 500; }
+.foot b { color: var(--accent); font: italic 600 1.125rem/1.2 var(--serif); }
 
 /* Entrance: the card settles in, line by line, once the doors have opened */
 .in { opacity: 0; transform: translateY(14px); }
@@ -397,7 +430,7 @@ html.rm .btn { transition: none; }
 /* ==========================================================================
    7. AMBIENT: PETALS, MUSIC, TOAST
    ========================================================================== */
-.petals { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 5; }
+.petals { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
 .petal {
   position: absolute;
   top: -24px;
@@ -406,7 +439,7 @@ html.rm .btn { transition: none; }
   border: 1px solid rgba(184, 137, 59, .4);
   border-radius: 80% 12% 80% 12%;
   background: #FFFEFA;
-  animation: fall var(--dur) linear infinite;
+  animation: fall var(--dur) linear 1 both;
   animation-delay: var(--delay);
 }
 @keyframes fall {
@@ -502,7 +535,7 @@ html.grid .gridov { display: grid; }
   .p-border { position: absolute; inset: 6mm; width: 198mm; height: 285mm; }
   .p-inner { position: absolute; inset: 34mm 26mm 30mm; display: flex; flex-direction: column; align-items: center; justify-content: space-between; }
   .p-inv { color: var(--gold-ink); font: italic 500 13pt var(--serif); }
-  .p-ganesha { display: block; width: 16mm; height: 16mm; margin: 0 auto 1mm; }
+  .p-ganesha { color: #74510F; display: block; width: 16mm; height: 16mm; margin: 0 auto 1mm; }
   .p-pre { color: var(--gold-ink); font-size: 9.5pt; font-weight: 600; letter-spacing: .06em; }
   .p-title { color: #8A6420; font: 600 44pt/1.15 var(--serif); }
   .p-sub { font: italic 500 14pt var(--serif); }
@@ -613,9 +646,9 @@ html.grid .gridov { display: grid; }
 
     <!-- Lord Ganesha: crowned head, broad ears, trunk curling to his left, one broken tusk (Ekadanta) -->
     <symbol id="ganesha" viewBox="0 0 64 64">
-      <path d="M23.5 19L25.5 10 29 7.5 32 1.5 35 7.5 38.5 10 40.5 19Z" fill="url(#brass)" stroke="#8A6420" stroke-width="1" stroke-linejoin="round"/>
+      <path d="M23.5 19L25.5 10 29 7.5 32 1.5 35 7.5 38.5 10 40.5 19Z" fill="url(#brass)" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
       <circle cx="32" cy="12" r="1.6" fill="#A3172B"/>
-      <g fill="none" stroke="#8A6420" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22.5 19.5H41.5"/>
         <path d="M23.5 21C13 14 3.5 21 6.5 32 8.5 40 17 41 24 35.5"/>
         <path d="M40.5 21C51 14 60.5 21 57.5 32 55.5 40 47 41 40 35.5"/>
@@ -798,6 +831,7 @@ html.grid .gridov { display: grid; }
    Leave a value as "" and it shows as a ⟦PLACEHOLDER⟧ on the page.
    ========================================================================== */
 const CONFIG = {
+  theme: "silk",             // "ivory", "silk" (deep maroon) or "white". Add ?theme=silk to the URL to preview.
   proofMode: false,           // true shows the Proof panel for checking
 
   hosts: "Vijayalakshmi & Regupathi",
@@ -1030,20 +1064,23 @@ function downloadIcs() {
 }
 
 /* ==========================================================================
-   AMBIENT JASMINE PETALS: sparse, 8 on phones, 12 on desktop
+   JASMINE PETALS: one gentle shower as the doors open, then the text is left clear
    ========================================================================== */
+let petalTimer;
 function startPetals() {
   const box = $("#petals");
   box.innerHTML = "";
+  clearTimeout(petalTimer);
   if (reduced()) return;
-  const n = innerWidth < 760 ? 8 : 12;
+  const n = innerWidth < 760 ? 10 : 16;
   for (let i = 0; i < n; i++) {
     const p = document.createElement("i");
     p.className = "petal";
-    const dur = 17 + Math.random() * 12;
-    p.style.cssText = `left:${Math.random() * 100}%;--s:${7 + Math.random() * 5}px;--dur:${dur}s;--delay:${-Math.random() * dur}s;--dx:${(Math.random() * 110 - 55).toFixed(0)}px;--rot:${(Math.random() * 360 + 180).toFixed(0)}deg`;
+    const dur = 5 + Math.random() * 3;
+    p.style.cssText = `left:${Math.random() * 100}%;--s:${7 + Math.random() * 5}px;--dur:${dur}s;--delay:${(Math.random() * 2).toFixed(2)}s;--dx:${(Math.random() * 110 - 55).toFixed(0)}px;--rot:${(Math.random() * 360 + 180).toFixed(0)}deg`;
     box.append(p);
   }
+  petalTimer = setTimeout(() => { box.innerHTML = ""; }, 11000);
 }
 
 /* ==========================================================================
@@ -1150,6 +1187,7 @@ function setupProof() {
 /* ==========================================================================
    START
    ========================================================================== */
+root.dataset.theme = new URLSearchParams(location.search).get("theme") || CONFIG.theme;
 buildThoranam();
 render();
 setupMusic();
